@@ -1,0 +1,25 @@
+
+ <div class='container'>
+
+    <% if @user.errors.any? %>
+      <p><%= @user.errors.count %> errors prohibited this book from being saved:</p>
+        <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+    <% end %>
+
+    <div class="body-wrap">
+      <section class="slice slice-lg sct-color-1">
+        <h2 class="form-header-title">User info</h2>
+        <%= form_for(@user) do |f| %>
+          <h5 >Name　<%= f.text_field :name %></h5>
+          <h5>Image</h5>
+          <%= f.attachment_field :profile_image %>
+          <h5>Introduction<%= f.text_field :introduction %></h5>
+          <%= f.submit "Update User" %>
+        <% end %>
+      </section>
+    </div>
+</div>
